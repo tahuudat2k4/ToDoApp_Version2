@@ -4,9 +4,9 @@ import instance from "./AxiosInstance";
 const createTask = (data) => {
     return instance.post('/tasks/create', data);
 }
-// Get all tasks for a user
-const getAllTasks = (userId) => {
-    return instance.get(`/tasks/getAll/${userId}`);
+// Get all tasks for the authenticated user
+const getAllTasks = () => {
+    return instance.get('/tasks/getAll');
 }
 // Update a task
 const updateTask = (id, data) => {

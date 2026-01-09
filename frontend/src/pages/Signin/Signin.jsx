@@ -14,11 +14,7 @@ const Signin = () => {
       e.preventDefault()
       const data = { email, password };
       const res = await AuthServices.signinUser(data);
-      // Save token to localStorage
-      localStorage.setItem('todoapp', JSON.stringify({
-        token: res.data.token,
-        user: res.data.user
-      }));
+      
       // Validate response data
       if (!res.data?.token || !res.data?.user) {
         console.error('Invalid server response: missing token or user data');
@@ -37,7 +33,6 @@ const Signin = () => {
         toast.error('Failed to store authentication data. Please try again.');
         return;
       }
->>>>>>> 569b63894890d94aae9067c32da8d6b61bc00035
       
       toast.success(res.data.message);
       navigate('/homepage');

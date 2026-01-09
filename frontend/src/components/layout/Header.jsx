@@ -2,10 +2,22 @@ import { CircleUser } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import {toast} from 'sonner';
+import { useMemo } from 'react';
 
 
 const Header = () => {
     const navigate = useNavigate();
+    
+    // Get username from localStorage (memoized)
+    const username = useMemo(() => {
+        try {
+            const userData = JSON.parse(localStorage.getItem('todoapp'));
+            return userData?.user?.username || '';
+        } catch {
+            return '';
+        }
+    }, []);
+    
     // logout function 
     const handleLogout = () => {
         localStorage.removeItem('todoapp');
@@ -17,7 +29,7 @@ const Header = () => {
         {/*welcome message */}
         <div className="flex items-center ">
             <CircleUser size={32} />
-            <p className="text-xl font-bold ml-2">Welcome !</p>
+            <p className="text-xl font-bold ml-2">Welcome {username}!</p>
         </div>
         {/* logout button */}
         <button onClick={handleLogout} className='cursor-pointer'>

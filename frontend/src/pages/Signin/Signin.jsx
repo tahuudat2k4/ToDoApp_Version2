@@ -14,6 +14,14 @@ const Signin = () => {
       e.preventDefault()
       const data = { email, password };
       const res = await AuthServices.signinUser(data);
+      
+      // Store token and user data in localStorage
+      const userData = {
+        token: res.data.token,
+        user: res.data.user
+      };
+      localStorage.setItem('todoapp', JSON.stringify(userData));
+      
       toast.success(res.data.message);
       navigate('/homepage');
       console.log(res.data);

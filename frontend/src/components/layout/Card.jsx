@@ -32,8 +32,7 @@ const Card = ({ allTask, getUserTask }) => {
                     allTask?.map((task) => (
                         <div
                             key={task._id}
-                            className="group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl 
-                                     transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                            className="group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                         >
                             {/* Card Header */}
                             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-100">
@@ -42,11 +41,11 @@ const Card = ({ allTask, getUserTask }) => {
                                         {task?.title}
                                     </h3>
                                     <span
-                                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
-                                                  ${task?.isCompleted
+                                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
+                                            task?.isCompleted
                                                 ? 'bg-green-100 text-green-700 ring-1 ring-green-600/20'
                                                 : 'bg-amber-100 text-amber-700 ring-1 ring-amber-600/20'
-                                            }`}
+                                        }`}
                                     >
                                         {task?.isCompleted ? '✓ Completed' : '○ Incomplete'}
                                     </span>
@@ -76,9 +75,7 @@ const Card = ({ allTask, getUserTask }) => {
                             {/* Card Footer */}
                             <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex gap-3">
                                 <button
-                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 
-                                             bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium 
-                                             transition-colors duration-200 shadow-sm hover:shadow-md"
+                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors duration-200 shadow-sm hover:shadow-md"
                                     title="Edit Task"
                                     onClick={() => handleEdit(task)}
                                 >
@@ -86,9 +83,7 @@ const Card = ({ allTask, getUserTask }) => {
                                     <span>Edit</span>
                                 </button>
                                 <button
-                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 
-                                             bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium 
-                                             transition-colors duration-200 shadow-sm hover:shadow-md"
+                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors duration-200 shadow-sm hover:shadow-md"
                                     title="Delete Task"
                                     onClick={() => handleDelete(task?._id)}
                                 >

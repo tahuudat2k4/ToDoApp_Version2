@@ -17,7 +17,7 @@ const Signin = () => {
       
       // Validate response data
       if (!res.data?.token || !res.data?.user) {
-        throw new Error('Invalid response from server');
+        throw new Error('Authentication failed: missing token or user data from server response');
       }
       
       // Store token and user data in localStorage
@@ -37,7 +37,7 @@ const Signin = () => {
       navigate('/homepage');
       console.log(res.data);
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Signin failed');
+      toast.error(error.response?.data?.message || error.message || 'Signin failed');
       console.log(error);
     }
   }

@@ -6,13 +6,6 @@ const getTaskController = async (req, res) => {
         // get user id from authenticated request
         const userId = req.user.id;
         
-        // validate user id 
-        if(!userId){
-            return res.status(401).json({
-                message: 'User not authenticated'
-            })
-        }
-        
         // get tasks from db
         const tasks = await Task.find({createdBy: userId});
         
@@ -40,13 +33,6 @@ const createTaskController = async (req, res) => {
         if(!title || !description){
             return res.status(400).json({
                 message: 'Title and Description are required'
-            })
-        }
-        
-        // Validate user authentication
-        if(!createdBy){
-            return res.status(401).json({
-                message: 'User not authenticated'
             })
         }
         

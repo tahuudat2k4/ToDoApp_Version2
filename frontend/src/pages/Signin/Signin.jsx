@@ -17,7 +17,8 @@ const Signin = () => {
       
       // Validate response data
       if (!res.data?.token || !res.data?.user) {
-        throw new Error('Authentication failed: missing token or user data from server response');
+        console.error('Invalid server response: missing token or user data');
+        throw new Error('LOGIN_DATA_MISSING');
       }
       
       // Store token and user data in localStorage
@@ -37,7 +38,12 @@ const Signin = () => {
       navigate('/homepage');
       console.log(res.data);
     } catch (error) {
-      toast.error(error.response?.data?.message || error.message || 'Signin failed');
+      // Handle different error types with user-friendly messages
+      if (error.message === 'LOGIN_DATA_MISSING') {
+        toast.error('Login failed. Please try again.');
+      } else {
+        toast.error(error.response?.data?.message || 'Signin failed');
+      }
       console.log(error);
     }
   }

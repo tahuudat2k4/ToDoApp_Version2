@@ -29,9 +29,9 @@ const Card = ({ allTask, getUserTask }) => {
         <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {
-                    allTask?.map((task, index) => (
+                    allTask?.map((task) => (
                         <div
-                            key={index}
+                            key={task._id}
                             className="group bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl 
                                      transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                         >

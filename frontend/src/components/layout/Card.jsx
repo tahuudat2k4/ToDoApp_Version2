@@ -75,7 +75,7 @@ const Card = ({ allTask, getUserTask }) => {
                             {/* Card Footer */}
                             <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex gap-3">
                                 <button
-                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors duration-200 shadow-sm hover:shadow-md"
+                                    className="cursor-pointer flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors duration-200 shadow-sm hover:shadow-md"
                                     title="Edit Task"
                                     onClick={() => handleEdit(task)}
                                 >
@@ -83,7 +83,7 @@ const Card = ({ allTask, getUserTask }) => {
                                     <span>Edit</span>
                                 </button>
                                 <button
-                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors duration-200 shadow-sm hover:shadow-md"
+                                    className="cursor-pointer flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors duration-200 shadow-sm hover:shadow-md"
                                     title="Delete Task"
                                     onClick={() => handleDelete(task?._id)}
                                 >

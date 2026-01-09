@@ -86,7 +86,7 @@ const PopModal = ({ title, setTitle, description, setDescription, showModal, set
                             <div className="flex justify-end gap-3 border-t px-6 py-4">
                                 <button
                                     type="button"
-                                    className="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700
+                                    className="cursor-pointer rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700
                        hover:bg-gray-200"
                                     onClick={ handleClose }
                                 >
@@ -94,7 +94,7 @@ const PopModal = ({ title, setTitle, description, setDescription, showModal, set
                                 </button>
                                 <button
                                     type="button"
-                                    className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white
+                                    className="cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white
                        hover:bg-blue-700"
                                     onClick={ handleSubmit }
                                 >

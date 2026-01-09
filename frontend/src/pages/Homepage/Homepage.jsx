@@ -21,20 +21,18 @@ const Homepage = () => {
     setDescription("");
   }
   // get user task 
-  const userData = JSON.parse(localStorage.getItem("todoapp"));
-    const id = userData && userData?.user.id;
-    const getUserTask =  async() => {
-      setLoading(true);
-      try {
-        const {data} = await TaskServices.getAllTasks(id);
-        setLoading(false);
-        setAllTask(data?.todos);
-        console.log(data);
-      } catch (error) {
-        setLoading(false);
-        console.log(error);
-      }
-    };
+  const getUserTask =  async() => {
+    setLoading(true);
+    try {
+      const {data} = await TaskServices.getAllTasks();
+      setLoading(false);
+      setAllTask(data?.todos);
+      console.log(data);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
     // Get user task 
     useEffect(()=>{
       getUserTask();

@@ -7,12 +7,7 @@ const PopModal = ({ title, setTitle, description, setDescription, showModal, set
     }
     const handleSubmit = async () => {
         try {
-            const userData = JSON.parse(localStorage.getItem("todoapp"));
-            const createdBy = userData && userData.user.id;
-            if (!createdBy) {
-                return toast.error("User not logged in")
-            }
-            const data = { title, description, createdBy };
+            const data = { title, description };
             if (!title || !description) {
                 return toast.error("Please fill all the fields");
             }
@@ -27,7 +22,7 @@ const PopModal = ({ title, setTitle, description, setDescription, showModal, set
 
         } catch (error) {
             console.log(error);
-            toast.error(error.message);
+            toast.error(error.response?.data?.message || error.message);
         }
     }
     return (

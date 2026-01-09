@@ -14,18 +14,41 @@ const Signin = () => {
       e.preventDefault()
       const data = { email, password };
       const res = await AuthServices.signinUser(data);
-      
       // Save token to localStorage
       localStorage.setItem('todoapp', JSON.stringify({
         token: res.data.token,
         user: res.data.user
       }));
+      // Validate response data
+      if (!res.data?.token || !res.data?.user) {
+        console.error('Invalid server response: missing token or user data');
+        throw new Error('LOGIN_DATA_MISSING');
+      }
+      
+      // Store token and user data in localStorage
+      try {
+        const userData = {
+          token: res.data.token,
+          user: res.data.user
+        };
+        localStorage.setItem('todoapp', JSON.stringify(userData));
+      } catch (storageError) {
+        console.error('Failed to store authentication data:', storageError);
+        toast.error('Failed to store authentication data. Please try again.');
+        return;
+      }
+>>>>>>> 569b63894890d94aae9067c32da8d6b61bc00035
       
       toast.success(res.data.message);
       navigate('/homepage');
       console.log(res.data);
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Signin failed');
+      // Handle different error types with user-friendly messages
+      if (error.message === 'LOGIN_DATA_MISSING') {
+        toast.error('Login failed. Please try again.');
+      } else {
+        toast.error(error.response?.data?.message || 'Signin failed');
+      }
       console.log(error);
     }
   }

@@ -2,20 +2,21 @@ import { CircleUser } from 'lucide-react';
 import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import {toast} from 'sonner';
+import { useMemo } from 'react';
 
 
 const Header = () => {
     const navigate = useNavigate();
-    // Get username from localStorage
-    const getUserName = () => {
+    
+    // Get username from localStorage (memoized)
+    const username = useMemo(() => {
         try {
             const userData = JSON.parse(localStorage.getItem('todoapp'));
             return userData?.user?.username || '';
         } catch {
             return '';
         }
-    };
-    const username = getUserName();
+    }, []);
     
     // logout function 
     const handleLogout = () => {

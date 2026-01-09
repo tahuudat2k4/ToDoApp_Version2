@@ -14,11 +14,7 @@ const Signin = () => {
       e.preventDefault()
       const data = { email, password };
       const res = await AuthServices.signinUser(data);
-      // Save token to localStorage
-      localStorage.setItem('todoapp', JSON.stringify({
-        token: res.data.token,
-        user: res.data.user
-      }));
+      
       // Validate response data
       if (!res.data?.token || !res.data?.user) {
         console.error('Invalid server response: missing token or user data');

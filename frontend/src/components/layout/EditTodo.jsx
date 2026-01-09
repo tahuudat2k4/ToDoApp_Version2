@@ -5,7 +5,7 @@ import { useState } from 'react';
 const EditTodo = ({ task, setShowModal, getUserTask }) => {
     const [title, setTitle] = useState(task?.title || "");
     const [description, setDescription] = useState(task?.description || "");
-    const [isCompleted, setIsCompleted] = useState(task?.isCompleted || false);
+    const [status, setStatus] = useState(task?.status || false);
 
     const handleClose = () => {
         setShowModal(false);
@@ -13,7 +13,7 @@ const EditTodo = ({ task, setShowModal, getUserTask }) => {
 
     const handleSubmit = async () => {
         try {
-            const data = { title, description, isCompleted };
+            const data = { title, description, status };
             if (!title || !description) {
                 return toast.error("Please fill all the fields");
             }
@@ -84,15 +84,15 @@ const EditTodo = ({ task, setShowModal, getUserTask }) => {
 
                         <div className="flex items-center gap-2">
                             <input
-                                id="isCompleted"
+                                id="status"
                                 type="checkbox"
                                 className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                                checked={isCompleted}
-                                onChange={(e) => setIsCompleted(e.target.checked)}
+                                checked={status}
+                                onChange={(e) => setStatus(e.target.checked)}
                             />
                             <label
                                 className="text-sm text-gray-700"
-                                htmlFor="isCompleted"
+                                htmlFor="status"
                             >
                                 Mark as completed
                             </label>

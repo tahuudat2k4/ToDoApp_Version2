@@ -45,7 +45,7 @@ const Homepage = () => {
         <div className='flex gap-20 justify-between'>
           <h1 className='text-xl font-bold'>Manage Your Task</h1>
           <Input className='w-80' ></Input>
-          <Button className='flex cursor-pointer' onClick={handleModalOnClick}><Plus/> Create new task</Button>
+          <Button className='flex cursor-pointer bg-indigo-700 hover:bg-indigo-600' onClick={handleModalOnClick}><Plus/> Create new task</Button>
         </div>
         {loading ?(<Spinner/>) :( allTask && <Card allTask={allTask} getUserTask={getUserTask}/>)}
         <PopModal

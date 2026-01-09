@@ -33,7 +33,7 @@ const Header = () => {
         </div>
         {/* logout button */}
         <button onClick={handleLogout} className='cursor-pointer'>
-            <LogOut size={32} />
+            <LogOut className='text-red-500' size={32} />
         </button>
     </div>
   )

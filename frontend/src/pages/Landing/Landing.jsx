@@ -83,7 +83,7 @@ const Landing = () => {
       <footer className="py-8 px-6 bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto text-center">
           <div className="text-2xl font-bold text-indigo-400 mb-4">ToDoApp</div>
-          <p className="text-gray-400">© 2026 ToDoApp. All rights reserved. Built with ❤️ for productivity.</p>
+          <p className="text-gray-400">© 2026 ToDoApp. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -6,6 +6,17 @@ import {toast} from 'sonner';
 
 const Header = () => {
     const navigate = useNavigate();
+    // Get username from localStorage
+    const getUserName = () => {
+        try {
+            const userData = JSON.parse(localStorage.getItem('todoapp'));
+            return userData?.user?.username || '';
+        } catch {
+            return '';
+        }
+    };
+    const username = getUserName();
+    
     // logout function 
     const handleLogout = () => {
         localStorage.removeItem('todoapp');
@@ -17,7 +28,7 @@ const Header = () => {
         {/*welcome message */}
         <div className="flex items-center ">
             <CircleUser size={32} />
-            <p className="text-xl font-bold ml-2">Welcome !</p>
+            <p className="text-xl font-bold ml-2">Welcome {username}!</p>
         </div>
         {/* logout button */}
         <button onClick={handleLogout} className='cursor-pointer'>

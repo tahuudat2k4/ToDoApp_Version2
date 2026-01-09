@@ -37,8 +37,6 @@ const Signin = () => {
         toast.error('Failed to store authentication data. Please try again.');
         return;
       }
->>>>>>> 569b63894890d94aae9067c32da8d6b61bc00035
-      
       toast.success(res.data.message);
       navigate('/homepage');
       console.log(res.data);

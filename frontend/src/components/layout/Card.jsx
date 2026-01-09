@@ -29,7 +29,7 @@ const Card = ({allTask, getUserTask}) => {
                 {
                     allTask?.map((task, index) => (
                         <>
-                            <div className="card border-primary mb-3 mt-3" style={ { maxWidth: '18rem' } } key={ index }>
+                            <div className="card border-primary mb-3 mt-3" key={ index }>
                                 <div className="card-header">
                                     <div className="chead">
                                         <h6>{ task?.title.substring(0, 10) }</h6>

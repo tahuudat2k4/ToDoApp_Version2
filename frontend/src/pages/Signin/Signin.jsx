@@ -1,6 +1,6 @@
 import { LoginForm } from '@/components/login-form'
 import { useState } from 'react'
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
 import { useNavigate } from 'react-router'
 import AuthServices from '@/services/AuthServices'
 
@@ -14,6 +14,13 @@ const Signin = () => {
       e.preventDefault()
       const data = { email, password };
       const res = await AuthServices.signinUser(data);
+      
+      // Save token to localStorage
+      localStorage.setItem('todoapp', JSON.stringify({
+        token: res.data.token,
+        user: res.data.user
+      }));
+      
       toast.success(res.data.message);
       navigate('/homepage');
       console.log(res.data);

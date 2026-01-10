@@ -14,6 +14,7 @@ const Homepage = () => {
   const [description, setDescription] = useState("");
   const [allTask, setAllTask] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   // handle modal 
   const handleModalOnClick = () =>{
     setShowModal(true);
@@ -37,6 +38,14 @@ const Homepage = () => {
     useEffect(()=>{
       getUserTask();
     }, []);
+    
+    // Filter tasks based on search query
+    const filteredTasks = allTask.filter(task => {
+      if (!searchQuery) return true;
+      const query = searchQuery.toLowerCase();
+      return task.title?.toLowerCase().includes(query) || 
+             task.description?.toLowerCase().includes(query);
+    });
     // 
   return (
     <div className='flex flex-col min-h-screen width-full'>
@@ -44,10 +53,15 @@ const Homepage = () => {
       <div className='container mx-auto mt-8 w-full'>
         <div className='flex gap-20 justify-between'>
           <h1 className='text-xl font-bold'>Manage Your Task</h1>
-          <Input className='w-80' ></Input>
+          <Input 
+            className='w-80' 
+            placeholder='Search tasks...'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <Button className='flex cursor-pointer bg-indigo-700 hover:bg-indigo-600' onClick={handleModalOnClick}><Plus/> Create new task</Button>
         </div>
-        {loading ?(<Spinner/>) :( allTask && <Card allTask={allTask} getUserTask={getUserTask}/>)}
+        {loading ?(<Spinner/>) :( allTask && <Card allTask={filteredTasks} getUserTask={getUserTask}/>)}
         <PopModal
         title={title}
         setTitle={setTitle}

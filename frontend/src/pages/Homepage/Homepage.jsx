@@ -2,7 +2,7 @@ import Header from '@/components/layout/Header';
 import {Input} from '@/components/ui/input';
 import { Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import PopModal from '@/components/layout/PopModal';
 import Spinner from '@/components/layout/Spinner';
 import Card from '@/components/layout/Card'
@@ -39,13 +39,15 @@ const Homepage = () => {
       getUserTask();
     }, []);
     
-    // Filter tasks based on search query
-    const filteredTasks = allTask.filter(task => {
-      if (!searchQuery) return true;
-      const query = searchQuery.toLowerCase();
-      return task.title?.toLowerCase().includes(query) || 
-             task.description?.toLowerCase().includes(query);
-    });
+    // Filter tasks based on search query (memoized for performance)
+    const filteredTasks = useMemo(() => {
+      return allTask.filter(task => {
+        if (!searchQuery) return true;
+        const query = searchQuery.toLowerCase();
+        return task.title?.toLowerCase().includes(query) || 
+               task.description?.toLowerCase().includes(query);
+      });
+    }, [allTask, searchQuery]);
     // 
   return (
     <div className='flex flex-col min-h-screen width-full'>
